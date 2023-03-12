@@ -1,0 +1,17 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: "Parabot"
+  datasource:
+    url: "jdbc:postgresql://localhost:5432/Parabot"
+    driver-class-name: "org.postgresql.Driver"
+    username: postgres
+    password: root
+  jpa:
+    properties:
+      hibernate:
+        enable_lazy_load_no_trans: "true"
+        dialect: "org.hibernate.dialect.PostgreSQLDialect"
+    hibernate:
+      ddl-auto: create-drop
