@@ -11,7 +11,8 @@ spring:
   jpa:
     properties:
       hibernate:
+        globally_quoted_identifiers: "true"
         enable_lazy_load_no_trans: "true"
         dialect: "org.hibernate.dialect.PostgreSQLDialect"
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update

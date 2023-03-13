@@ -1,23 +1,23 @@
 package me.litovskiy.parabot.service;
 
-import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
-import me.litovskiy.parabot.model.Group;
 import me.litovskiy.parabot.model.User;
 import me.litovskiy.parabot.repository.GroupRepository;
 import me.litovskiy.parabot.repository.UserRepository;
+import me.litovskiy.parabot.service.interfaces.UserService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 
 @Transactional
 @Service(value = "userService")
 @RequiredArgsConstructor
-public class UserServiceImp implements UserService{
+public class UserServiceImp implements UserService {
 
     private final UserRepository userRepository;
-    private final GroupRepository groupRepository;
+
     @Override
     public void add(User user) {
         userRepository.save(user);
@@ -51,14 +51,10 @@ public class UserServiceImp implements UserService{
         }
         return false;
     }
+
     @PostConstruct
     public void fillDataBase() {
-        findAll().forEach(user -> deleteById(user.getId()));
-        groupRepository.save(new Group().setName("ИС214"));
-
-        add(new User()
-                .setUserId(123123123)
-                .setGroup(groupRepository.findByName("ИС214")));
+        // заполнение
     }
 
 }

@@ -1,4 +1,4 @@
-package me.litovskiy.parabot.service;
+package me.litovskiy.parabot.service.interfaces;
 
 import me.litovskiy.parabot.model.User;
 
