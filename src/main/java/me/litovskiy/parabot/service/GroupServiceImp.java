@@ -52,6 +52,6 @@ public class GroupServiceImp implements GroupService {
 
     @Override
     public Group getByName(String name) {
-        return groupRepository.getByName(name);
+        return groupRepository.getByName(name.toUpperCase());
     }
 }

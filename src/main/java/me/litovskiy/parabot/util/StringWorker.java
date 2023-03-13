@@ -15,6 +15,20 @@ import java.util.List;
 @Component
 public class StringWorker {
     private final LessonService lessonService;
+    public String getLessonsOnWeek(Group group) {
+        int day = -1;
+        boolean isNumerator = getNumerator();
+        if(LocalDate.now().getDayOfWeek().getValue()-1 > 4) isNumerator = !isNumerator;
+        StringBuilder result = new StringBuilder();
+        for (Lesson lesson : lessonService.getAllWeek(isNumerator, group)) {
+            if(lesson.getDay() != day) {
+                day = lesson.getDay();
+                result.append(Parser.days.get(lesson.getDay()).trim()).append("\n\n");
+            }
+            addLesson(result, lesson);
+        }
+        return result.toString();
+    }
 
     public String getLessonsByDay(Group group, int day) {
         StringBuilder result = new StringBuilder();

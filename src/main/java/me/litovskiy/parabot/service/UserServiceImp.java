@@ -2,7 +2,6 @@ package me.litovskiy.parabot.service;
 
 import lombok.RequiredArgsConstructor;
 import me.litovskiy.parabot.model.User;
-import me.litovskiy.parabot.repository.GroupRepository;
 import me.litovskiy.parabot.repository.UserRepository;
 import me.litovskiy.parabot.service.interfaces.UserService;
 import org.springframework.stereotype.Service;
@@ -50,6 +49,11 @@ public class UserServiceImp implements UserService {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public User findByUserId(Long userId) {
+        return userRepository.findByUserId(userId);
     }
 
     @PostConstruct
